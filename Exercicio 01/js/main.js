@@ -1,28 +1,21 @@
 var valor1 = document.getElementById("valor1");
 var valor2 = document.getElementById("valor2");
 var resultado = document.getElementById("resultado");
-var n1 = Number(valor1.value);
-var n2 = Number(valor2.value);
+
 
 function Limpar() {
   valor1.value = "";
   valor2.value = "";
-  resultado.value = ""; // Limpar o resultado também
+  resultado.innerText = 0; 
+  valor1.focus();
 }
 
 function calculo(operador) {
-  // Obtendo os valores dos inputs e convertendo para números
-  let n1 = Number(document.getElementById("valor1").value);
-  let n2 = Number(document.getElementById("valor2").value);
-  let res;
-
-  // Verificar se os valores são válidos
-  if (isNaN(n1) || isNaN(n2)) {
-    alert("Por favor, insira números válidos.");
-    return;
-  }
-
-  // Realizar o cálculo baseado no operador
+ 
+  let n1 = Number(valor1.value);
+  let n2 = Number(valor2.value);
+  let res = Number();
+    // verificador()
   if (operador === "+") {
     res = n1 + n2;
   } else if (operador === "-") {
@@ -34,15 +27,30 @@ function calculo(operador) {
       res = n1 / n2;
     } else {
       alert("Divisão por 0 não é possível");
-      return; // Saia da função se houver divisão por zero
+      return; 
     }
   } else {
     alert("Operador inválido");
     return;
   }
 
-  // Atualizar o elemento resultado com o valor calculado
-  document.getElementById("resultado").textContent = res;
   
-  console.log(res); // Log do resultado para verificação
+  resultado.innerText = res;
+
+}
+
+function bloquearLetras(tecla){
+  console.log(tecla.charCode);
+  if ( tecla.charCode >= 65 && tecla.charCode <=112){
+    alert("Digite so numeros")
+    return false;
+  }
+}
+
+function verificador(){
+  if (n1 || n2 == ''){
+    alert("preenha os campos")
+  } else{
+    alert("td crto")
+  }
 }
